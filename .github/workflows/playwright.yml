@@ -1,0 +1,44 @@
+name: Playwright Tests
+
+# QUANDO correr: sempre que houver push ou pull request para o main
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    timeout-minutes: 60
+    # ONDE correr: num computador Linux na nuvem
+    runs-on: ubuntu-latest
+
+    # O QUE fazer, passo a passo
+    steps:
+      # 1. Descarregar o teu código do GitHub
+      - uses: actions/checkout@v4
+
+      # 2. Instalar o Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      # 3. Instalar as bibliotecas do projeto
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Instalar os browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 5. Correr os testes!
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      # 6. Guardar o relatório para poderes descarregar
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
