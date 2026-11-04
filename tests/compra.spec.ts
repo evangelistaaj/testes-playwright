@@ -1,3 +1,4 @@
+   // Testes do carrinho e do processo de checkout da SauceDemo
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
