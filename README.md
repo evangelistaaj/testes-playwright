@@ -1,5 +1,7 @@
 # 🎭 Testes Automatizados com Playwright – SauceDemo
 
+![Playwright Tests](https://github.com/evangelistaaj/testes-playwright/actions/workflows/playwright.yml/badge.svg)
+
 Projeto de automação de testes end-to-end (E2E) da loja de demonstração [SauceDemo](https://www.saucedemo.com/), desenvolvido com **Playwright** e **TypeScript**.
 
 ## 🛠️ Tecnologias
